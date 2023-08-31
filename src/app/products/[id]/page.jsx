@@ -4,7 +4,7 @@ import Buttons from "./Buttons";
 
 async function loadProduct(productId) {
   const { data } = await axios.get(
-    "http://localhost:3000/api/products/" + productId
+    process.env.BASE_URL + "/api/products/" + productId
   );
   return data;
 }
