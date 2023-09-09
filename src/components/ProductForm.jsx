@@ -50,8 +50,6 @@ function ProductForm() {
       const res = await axios.post("/api/products", product);
     } else {
       const res = await axios.put("/api/products/" + params.id, product);
-      console.log(res);
-      console.log("actualizando");
     }
     form.current.reset();
     router.refresh();

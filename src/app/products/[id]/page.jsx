@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import axios from "axios";
+import { conn } from "@/libs/mysql";
 import Buttons from "./Buttons";
 
 async function loadProduct(productId) {
-  const { data } = await axios.get(
-    process.env.BASE_URL + "/api/products/" + productId
-  );
+  const [data] = await conn.query("SELECT * FROM product WHERE id = ?", [
+    productId,
+  ]);
   return data;
 }
 

@@ -1,8 +1,10 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import Map from "@/components/maps/maps";
 
 const inter = Inter({ subsets: ["latin"] });
+const mapURL = `${process.env.MAPS_URL}${process.env.MAPS_API_KEY}`;
 
 export const metadata = {
   title: "Create Next App",
@@ -14,6 +16,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
+        <Map
+          googleMapURL={mapURL}
+          loadingElement={<div style={{ height: "100%" }} />}
+          containerElement={<div style={{ height: "50vh" }} />}
+          mapElement={<div style={{ height: "100%" }} />}
+        />
+
         <div className="h-[calc(100vh-5rem)]">{children}</div>
       </body>
     </html>

@@ -1,12 +1,12 @@
-// import { conn } from "@/libs/mysql"
+import { conn } from "@/libs/mysql";
 import ProductCard from "@/components/ProductCard";
-import axios from "axios";
+// import axios from "axios";
 
 async function loadProducts() {
-  const { data } = await axios.get(process.env.BASE_URL + "/api/products");
-  return data;
-  // const result=await conn.query('SELECT * FROM product')
-  // console.log(result);
+  // const { data } = await axios.get(process.env.BASE_URL + "/api/products");
+  // return data;
+  const products = await conn.query("SELECT * FROM product");
+  return products;
 }
 
 async function ProductPage() {

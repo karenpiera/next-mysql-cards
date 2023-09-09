@@ -11,3 +11,16 @@ CREATE TABLE product (
     image TEXT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userID INT UNSIGNED,
+    productID INT UNSIGNED NOT NULL,
+    description TEXT NOT NULL,
+    rating INT NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user_posts FOREIGN KEY (userID) REFERENCES user (id),
+    CONSTRAINT fk_product_posts FOREIGN KEY (productID) REFERENCES product (id)
+);
+
+
